@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="card text-bg-dark bg-gradient">
+  <img src="{% static 'blog/images/contacts.png' %}" class="card-img m-3" style="width: 75px;" alt="...">
+  <div class="card-img-overlay"><br/>
+    <h4 class="card-title text-center text-info">Контакты</h4>
+  </div>
+</div>
+
+<div class="container-sm mb-3 mt-1 g-col-3" style="max-width: 40rem;">
+    <form action="{% url 'contacts' %}" method="post" >
+        {% csrf_token %}
+        <div class="form-error bg-dark text-warning border-danger">{{ form.non_field_errors }}</div>
+        {% for f in form %}
+            <div class="m-2">
+              <label class="form-label">{{ f.label }}</label>
+                {% for m in f.errors %}
+                    <div class="alert alert-danger bg-dark text-warning border-danger" role="alert">
+                        {{ m }}
+                    </div>
+                {% endfor %}
+              {{ f }}
+            </div>
+        {% endfor %}
+        <div class="d-grid m-2">
+            <button type="submit" class="btn btn-primary mx-auto">Отправить сообщение</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

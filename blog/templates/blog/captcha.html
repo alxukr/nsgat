@@ -1,0 +1,23 @@
+{% load i18n %}
+{% spaceless %}
+<div class="row">
+    <div class="col-auto">
+        <img src="{{ image }}" alt="captcha" class="captcha m-2" />
+    </div>
+    <div class="col-auto">
+        {% for widget in widget.subwidgets %}
+            <input
+                    {% if widget.type != "hidden" %}
+                        placeholder="Введите текст с картики "
+                        class="form-control my-2 mx-2 text-bg-dark border-secondary"
+                    {% endif %} type="{{ widget.type }}"
+                    name="{{ widget.name }}"
+                    {% if widget.value != None %}
+                        value="{{ widget.value|stringformat:'s' }}"
+                    {% endif %}
+                    {% include "django/forms/widgets/attrs.html" %}
+            >
+        {% endfor %}
+    </div>
+</div>
+{% endspaceless %}

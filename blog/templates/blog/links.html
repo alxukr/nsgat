@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card text-bg-dark bg-gradient">
+  <img src="{% static 'blog/images/links.png' %}" class="card-img m-3" style="width: 75px;" alt="...">
+  <div class="card-img-overlay"><br/>
+    <h4 class="card-title text-center text-info">Полезные ссылки</h4>
+  </div>
+</div>
+
+<div class="accordion accordion-flush m-3" id="accordionFlushLinks">
+  {% for cat in cats %}
+    {% if cat.links_set %}
+      <div class="accordion-item bg-dark border border-secondary">
+        <h2 class="accordion-header" id="flush-heading{{cat.id}}">
+          <button class="accordion-button collapsed  bg-dark bg-gradient text-info " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{cat.id}}" aria-expanded="false" aria-controls="flush-collapseOne" style="box-shadow:None;">
+            {{ cat.name }}
+          </button>
+        </h2>
+        {% for link in cat.links_set.all %}
+          <div id="flush-collapse{{cat.id}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{cat.id}}" data-bs-parent="#accordionFlushLinks">
+            <div class="accordion-body bg-dark bg-gradient text-light"><h6>{{link.title}}</h6><p class="text-info">{{link.description}}</p><a href="{{link.url}}" class="btn btn-primary btn-sm" target="_blank">перейти</a></div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endblock content %}

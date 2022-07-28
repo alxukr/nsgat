@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="card text-bg-dark bg-gradient">
+  <img src="{% static 'blog/images/contacts.png' %}" class="card-img m-3" style="width: 75px;" alt="...">
+  <div class="card-img-overlay"><br/>
+    <h4 class="card-title text-center text-info">Контакты</h4>
+  </div>
+</div>
+
+
+
+<div class="card text-bg-dark">
+  <img src="{% static 'blog/images/linuxdark.png' %}" alt="" class="mx-auto pt-3" style="width: 300px;">
+  <a href="{% url 'home' %}" class="btn btn-primary mx-auto" >перейти на Главную</a>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="card text-bg-dark bg-gradient">
+  <img src="{% static 'blog/images/api.png' %}" class="card-img m-3" style="width: 75px;" alt="...">
+  <div class="card-img-overlay"><br/>
+    <h4 class="card-title text-center text-info">API сайта</h4>
+  </div>
+</div>
+
+
+
+<div class="card text-bg-dark">
+  <h1 class="text-center">Не найдено на сайте</h1>
+  <img src="{% static 'blog/images/yoda.png' %}" alt="" class="mx-auto pt-3" style="width: 300px;">
+  <h1 class="text-center">страницы такой</h1>
+</div>
+
+{% endblock content %}
