@@ -11,7 +11,6 @@
 
 <div class="accordion accordion-flush m-3" id="accordionFlushLinks">
   {% for cat in cats %}
-    {% if cat.links_set %}
       <div class="accordion-item bg-dark border border-secondary">
         <h2 class="accordion-header" id="flush-heading{{cat.id}}">
           <button class="accordion-button collapsed  bg-dark bg-gradient text-info " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{cat.id}}" aria-expanded="false" aria-controls="flush-collapseOne" style="box-shadow:None;">
@@ -19,12 +18,13 @@
           </button>
         </h2>
         {% for link in cat.links_set.all %}
-          <div id="flush-collapse{{cat.id}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{cat.id}}" data-bs-parent="#accordionFlushLinks">
-            <div class="accordion-body bg-dark bg-gradient text-light"><h6>{{link.title}}</h6><p class="text-info">{{link.description}}</p><a href="{{link.url}}" class="btn btn-primary btn-sm" target="_blank">перейти</a></div>
-          </div>
+          {% if link.is_published %}
+            <div id="flush-collapse{{cat.id}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{cat.id}}" data-bs-parent="#accordionFlushLinks">
+              <div class="accordion-body bg-dark bg-gradient text-light"><h6>{{link.title}}</h6><p class="text-info">{{link.description}}</p><a href="{{link.url}}" class="btn btn-primary btn-sm" target="_blank">перейти</a></div>
+            </div>
+          {% endif %}
         {% endfor %}
       </div>
-    {% endif %}
   {% endfor %}
 </div>
 {% endblock content %}

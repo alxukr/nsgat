@@ -8,6 +8,7 @@ from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth import logout, login
 
+
 # Create your views here.
 
 
@@ -19,7 +20,7 @@ def home(request):
 
 
 def links(request):
-    cats = LinksCategory.objects.all()
+    cats = LinksCategory.objects.filter(is_published=True).filter(links__is_published=True).distinct()
     context = {'title': 'Ссылки', 'cats': cats}
     return render(request, 'blog/links.html', context=context)
 

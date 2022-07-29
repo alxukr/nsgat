@@ -85,5 +85,5 @@ venv.bak/
 
 
 /nsgat/settings.py
-/blog/static/
+#/blog/static/
 /blog/migrations/
