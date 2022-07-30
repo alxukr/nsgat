@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
@@ -55,6 +56,9 @@ class ScriptCategory(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('scripts', kwargs={'cat_slug': self.slug})
+
     class Meta:
         verbose_name = 'Категория скриптов'
         verbose_name_plural = 'Категории скриптов'
@@ -73,6 +77,9 @@ class Scripts(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('script', kwargs={'script_slug': self.slug})
 
     class Meta:
         verbose_name = 'Скрипт'

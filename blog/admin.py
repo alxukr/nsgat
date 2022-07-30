@@ -31,10 +31,11 @@ class ContactMessageAdmin(admin.ModelAdmin):
 
 
 class ScriptCategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
+    list_display = ('id', 'name', 'is_published')
     list_display_links = ('id', 'name')
     search_fields = ('name',)
     prepopulated_fields = {'slug': ('name',)}
+    list_editable = ('is_published',)
 
 
 class ScriptsAdminForm(forms.ModelForm):

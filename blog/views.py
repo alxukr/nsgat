@@ -107,3 +107,14 @@ def scripts(request, cat_slug='all'):
         'cats': cats
     }
     return render(request, 'blog/scripts.html', context=context)
+
+
+def script(request, script_slug='all'):
+    script = get_object_or_404(Scripts, slug=script_slug)
+    header = script.title
+    context = {
+        'title': header,
+        'script': script,
+    }
+    return render(request, 'blog/script.html', context=context)
+
