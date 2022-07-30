@@ -1,6 +1,6 @@
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponseNotFound
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 # from django.http import HttpResponse
 from .models import *
 from .forms import *
@@ -90,3 +90,20 @@ def logout_user(request):
 
 def sent(request):
     return render(request, 'blog/sent.html', context={'title': 'Отправлено'})
+
+
+def scripts(request, cat_slug='all'):
+    if cat_slug == 'all':
+        scriptlist = Scripts.objects.filter(is_published=True)
+        header = 'Все скрипты'
+    else:
+        cat = get_object_or_404(ScriptCategory, slug=cat_slug)
+        header = f'Скрипты : {cat.name}'
+        scriptlist = Scripts.objects.filter(category__slug=cat_slug).filter(is_published=True)
+    cats = ScriptCategory.objects.filter(is_published=True).filter(scripts__is_published=True).distinct()
+    context = {
+        'title': header,
+        'scripts': scriptlist,
+        'cats': cats
+    }
+    return render(request, 'blog/scripts.html', context=context)

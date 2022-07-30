@@ -18,7 +18,7 @@
   <body class="text-bg-dark">
     <nav class="navbar navbar-dark bg-dark bg-gradient shadow-sm border border-info sticky-top" style="--bs-border-opacity: .1;">
       <div class="container-fluid">
-        <img src="{% static 'blog/images/logo.jpg' %}" class="rounded-circle border border-info" style="height: 40px;" alt="...">
+        <img src="{% static 'blog/images/logo.jpg' %}" class="rounded-circle border border-secondary" style="height: 40px;" alt="...">
         <a class="navbar-brand text-info" href="{% url 'home' %}">✩✮★✮✩</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
           <span class="navbar-toggler-icon"></span>
@@ -27,36 +27,26 @@
           <div class="offcanvas-header bg-dark">
             <img src="{% static 'blog/images/menu.png' %}" height="50" alt="...">
 
-            <h5 class="offcanvas-title text-info" id="offcanvasDarkNavbarLabel">Меню сайта</h5>
+            <h5 class="offcanvas-title text-warning" id="offcanvasDarkNavbarLabel">Меню сайта</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Главная страница</a>
+                <a class="nav-link text-info" aria-current="page" href="{% url 'home' %}">Главная страница</a>
 
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Python скрипты
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="#">Работа с файлами</a></li>
-                  <li><a class="dropdown-item" href="#">Работа с WEB</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="#">Разное</a></li>
-                </ul>
+              <li class="nav-item">
+                <a class="nav-link text-info" href="{% url 'scripts' cat_slug='all' %}">Python скрипты</a>
               </li>
               <li>
-                <a class="dropdown-item" href="{% url 'api' %}">API сайта</a>
+                <a class="nav-link text-info" href="{% url 'api' %}">API сайта</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'links' %}">Полезные ссылки</a>
+                <a class="nav-link text-info" href="{% url 'links' %}">Полезные ссылки</a>
               </li>
               <li>
-                <a class="dropdown-item" href="{% url 'contacts' %}">Контакты</a>
+                <a class="nav-link text-info" href="{% url 'contacts' %}">Контакты</a>
               </li>
             </ul>
             <div class="card text-center bg-dark m-3">

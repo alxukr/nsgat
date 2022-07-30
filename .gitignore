@@ -88,3 +88,4 @@ venv.bak/
 #/blog/static/
 /blog/migrations/
 /static/
+/tst_local/

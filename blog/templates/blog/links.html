@@ -5,7 +5,7 @@
 <div class="card text-bg-dark bg-gradient">
   <img src="{% static 'blog/images/links.png' %}" class="card-img m-3" style="width: 75px;" alt="...">
   <div class="card-img-overlay"><br/>
-    <h4 class="card-title text-center text-info">Полезные ссылки</h4>
+    <h4 class="card-title text-center text-warning">Полезные ссылки</h4>
   </div>
 </div>
 
@@ -20,7 +20,7 @@
         {% for link in cat.links_set.all %}
           {% if link.is_published %}
             <div id="flush-collapse{{cat.id}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{cat.id}}" data-bs-parent="#accordionFlushLinks">
-              <div class="accordion-body bg-dark bg-gradient text-light"><h6>{{link.title}}</h6><p class="text-info">{{link.description}}</p><a href="{{link.url}}" class="btn btn-primary btn-sm" target="_blank">перейти</a></div>
+              <div class="accordion-body bg-dark bg-gradient text-warning"><h6>{{link.title}}</h6><p class="text-light">{{link.description}}</p><a href="{{link.url}}" class="btn btn-primary btn-sm" target="_blank">перейти</a></div>
             </div>
           {% endif %}
         {% endfor %}

@@ -1,0 +1,39 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card text-bg-dark bg-gradient">
+  <img src="{% static 'blog/images/code.png' %}" class="card-img m-3" style="width: 75px;" alt="...">
+  <div class="card-img-overlay"><br/>
+    <h4 class="card-title text-center text-warning">{{ title }}</h4>
+  </div>
+</div>
+
+
+<nav class="navbar navbar-dark bg-dark bg-gradient text-info">
+    <a class="nav-link dropdown-toggle mx-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Выберать категорию
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark mx-3 border-info">
+        {% for cat in cats %}
+        <li><a class="dropdown-item text-info" href="{% url 'scripts' cat_slug=cat.slug %}">{{ cat.name }}</a></li>
+        {% endfor %}
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item text-info" href="{% url 'scripts' cat_slug='all' %}">Все категории</a></li>
+    </ul>
+</nav>
+
+<table class="table table-dark table-striped my-5 mx-auto">
+    {% for script in scripts %}
+    <tr>
+        <td>
+            {{ forloop.counter }}
+        </td>
+        <td>
+            <a class="text-info" href="{% url 'scripts' cat_slug='all' %}">{{ script.title }}</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}

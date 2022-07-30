@@ -50,6 +50,7 @@ class ContactMessage(models.Model):
 class ScriptCategory(models.Model):
     name = models.CharField(max_length=255, null=False, verbose_name='Имя категории')
     is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL', default='')
 
     def __str__(self):
         return self.name
@@ -68,6 +69,7 @@ class Scripts(models.Model):
     updated = models.DateTimeField(auto_now=True, verbose_name="Изменено")
     category = models.ForeignKey('ScriptCategory', on_delete=models.PROTECT, verbose_name='Категория')
     is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL', default='')
 
     def __str__(self):
         return self.title

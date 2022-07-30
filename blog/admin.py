@@ -34,6 +34,7 @@ class ScriptCategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     list_display_links = ('id', 'name')
     search_fields = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
 
 
 class ScriptsAdminForm(forms.ModelForm):
@@ -53,9 +54,10 @@ class ScriptsAmin(admin.ModelAdmin):
     search_fields = ('title', 'description', 'code', 'additional', 'category')
     list_editable = ('is_published',)
     list_filter = ('is_published', 'category')
-    fields = ('title', 'category', 'description', 'code', 'additional', 'is_published', 'created', 'updated')
+    fields = ('title', 'slug', 'category', 'description', 'code', 'additional', 'is_published', 'created', 'updated')
     readonly_fields = ('created', 'updated')
     save_on_top = True
+    prepopulated_fields = {'slug': ('title',)}
 
 
 admin.site.register(Links, LinksAdmin)
