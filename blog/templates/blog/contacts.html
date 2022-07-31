@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<div class="container-sm mb-3 mt-1 g-col-3" style="max-width: 40rem;">
+<div class="container-sm mb-3 mt-1 g-col-3 py-3 bg-gradient border border-info" style="max-width: 40rem;">
     <form action="{% url 'contacts' %}" method="post" >
         {% csrf_token %}
         <div class="form-error bg-dark text-warning border-danger">{{ form.non_field_errors }}</div>
