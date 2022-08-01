@@ -92,8 +92,8 @@ def sent(request):
     return render(request, 'blog/sent.html', context={'title': 'Отправлено'})
 
 
-def scripts(request, cat_slug='all'):
-    if cat_slug == 'all':
+def scripts(request, cat_slug=None):
+    if not cat_slug:
         scriptlist = Scripts.objects.filter(is_published=True)
         header = 'Все скрипты'
     else:

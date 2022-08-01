@@ -13,6 +13,7 @@ urlpatterns = [
     path('login/', LoginUser.as_view(), name='login'),
     path('logout/', logout_user, name='logout'),
     path('sent', sent, name='sent'),
+    path('scripts/', scripts, name='scripts'),
     path('scripts/<slug:cat_slug>/', scripts, name='scripts'),
     path('script/<slug:script_slug>/', script, name='script'),
 ]
